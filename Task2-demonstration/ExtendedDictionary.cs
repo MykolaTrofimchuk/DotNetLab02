@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace Task2_demonstration
 {
+    // ExtendedDictionary - узагальнений клас для зберігання “розширеного словника”
     public class ExtendedDictionary<T, U, V> : IEnumerable<ExtendedDictionaryElement<T, U, V>>
     {
         private List<ExtendedDictionaryElement<T, U, V>> elements = new List<ExtendedDictionaryElement<T, U, V>>();
 
+        // додавання нового елементу у словник
         public void Add(T key, U value1, V value2)
         {
             elements.Add(new ExtendedDictionaryElement<T, U, V>(key, value1, value2));
         }
 
+        // видалення елемента із словника (за його ключем)
         public bool Remove(T key)
         {
             var element = elements.Find(e => e.Key.Equals(key));
@@ -27,16 +30,19 @@ namespace Task2_demonstration
             return false;
         }
 
+        // перевірка наявності елемента (за його ключем)
         public bool ContainsKey(T key)
         {
             return elements.Exists(e => e.Key.Equals(key));
         }
 
+        // перевірка наявності елемента (за його значеннями)
         public bool ContainsValue(U value1, V value2)
         {
             return elements.Exists(e => e.Value1.Equals(value1) && e.Value2.Equals(value2));
         }
 
+        // повертає елемент за заданим ключем (якщо він присутній у словнику)
         public ExtendedDictionaryElement<T, U, V> this[T key]
         {
             get
@@ -45,11 +51,13 @@ namespace Task2_demonstration
             }
         }
 
+        // повертає к-сть елементів у словнику
         public int Count
         {
             get { return elements.Count; }
         }
 
+        // методи інтерфейсу IEnumerator, щоб дозволити використання в циклах foreach.
         public IEnumerator<ExtendedDictionaryElement<T, U, V>> GetEnumerator()
         {
             return elements.GetEnumerator();
@@ -61,6 +69,7 @@ namespace Task2_demonstration
         }
     }
 
+    // ExtendedDictionaryElement - представлення окремого елемента словника
     public class ExtendedDictionaryElement<T, U, V>
     {
         public T Key { get; }

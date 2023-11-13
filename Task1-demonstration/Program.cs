@@ -47,7 +47,7 @@ internal class Program
 
         int[] new_array = example_array.UniqueArray();
         Console.Write("\nНовий унікальний масив (без повторюваних значень): { ");
-        foreach (int number in example_array)
+        foreach (int number in new_array)
         {
             Console.Write(number + "; ");
         }

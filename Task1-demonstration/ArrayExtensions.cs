@@ -8,6 +8,7 @@ namespace Task1_demonstration
 {
     public static class ArrayExtensions
     {
+        // к-сть заданих значень у певному масиві
         public static int CountOccurrences<T>(this T[] array, T value)
         {
             int count = 0;
@@ -22,9 +23,11 @@ namespace Task1_demonstration
             return count;
         }
 
+        // Повернення масиву унікальних значень (використовується метод Distinct() з простору імен System.Linq для цього)
         public static T[] UniqueArray<T>(this T[] array)
         {
             return array.Distinct().ToArray();
         }
     }
+
 }
